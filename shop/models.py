@@ -8,3 +8,6 @@ class Products(models.Model):
     category = models.CharField(max_length=200)
     description = models.TextField(max_length=500)
     image = models.CharField(max_length=300)
+    
+    def __str__(self):
+        return self.title

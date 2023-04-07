@@ -1,0 +1,19 @@
+.card-body {
+    height: 150px;
+    width: 150px;
+}
+
+.card-title {
+    font-weight: 900;
+}
+
+
+.card-text {
+    color: green;
+    font-weight: 800;
+}
+
+img {
+    height: 200px;
+    width: 200px;
+}

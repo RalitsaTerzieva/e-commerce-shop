@@ -53,10 +53,12 @@
                 <nav>
                     <ul class='pagination'>
                         {% if is_paginated %}
+                        <li class='page-item'><a href="?page=1" class='page-link'>First</a></li>
                         {% if page_obj.has_previous %}
                         <li class='page-item'>
                             <a href='?page={{ page_obj.previous_page_number }}' class="page-link">Previous</a>
                         </li>
+                       
                         {% endif %}
                         <li class='page-item active'>
                             <a href='?page={{ page_obj.number }}' class="page-link">Current</a>
@@ -65,6 +67,7 @@
                         <li class='page-item'>
                             <a href='?page={{ page_obj.next_page_number }}' class="page-link">Next</a>
                         </li>
+                        <li class='page-item'><a href="?page={{ page_obj.paginator.num_pages }}" class='page-link'>Last</a></li>
                         {% endif %}
                         {% endif %}
                     </ul>

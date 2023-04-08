@@ -19,10 +19,11 @@ from django.contrib import admin
 from django.urls import path
 from django.conf.urls.static import static
 
-from shop.views import ProductsListView
+from shop.views import ProductsListView, detail
 
 
 urlpatterns = [
     path("admin/", admin.site.urls),
     path('', ProductsListView.as_view(),name='list_products'),
+    path('<int:id>/', detail, name='detail')
 ] + static(settings.STATIC_URL, document_root=settings.STATIC_ROOT)

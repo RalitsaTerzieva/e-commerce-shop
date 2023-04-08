@@ -15,3 +15,7 @@ class ProductsListView(ListView):
             queryset = queryset.filter(title__icontains=item_name)
             
         return queryset
+    
+def detail(request, id):
+    product_object = Products.objects.get(id=id)
+    return render(request, 'shop/detail.html', {'product_object': product_object})

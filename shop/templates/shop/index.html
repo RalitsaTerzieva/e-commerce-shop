@@ -33,7 +33,7 @@
                           <a class="nav-link" href="#">Features</a>
                         </li>
                         <li class="nav-item">
-                            <button id='cart' data-bs-html="true" type="button" class="btn btn-secondary" data-bs-container="body" data-bs-toggle="popover" data-bs-placement="bottom" data-bs-content="This is your cart">
+                            <button id='cart' data-bs-html="true"  data-bs-sanitize='false' type="button" class="btn btn-secondary" data-bs-container="body" data-bs-toggle="popover" data-bs-placement="bottom" data-bs-content="This is your cart">
                                 Cart(0)
                             </button>
                         </li>
@@ -67,9 +67,7 @@
                 <div class='card mt-4 overflow-auto'>
                     <img src='{{ product.image }}' class='card-img-top'/>
                     <div class='card-body'>
-                        <div id='nm{{ product.id }}' class='card-title'>
-                            {{ product.title }}
-                        </div>
+                        <div id='nm{{ product.id }}' class='card-title'>{{ product.title }}</div>
                         <div class='card-text'>
                             ${{ product.price|floatformat:2 }}
                         </div>
@@ -125,9 +123,12 @@
                 let item_id = this.id;
                 
                 if(cart[item_id] != undefined){
-                    cart[item_id] = cart[item_id] + 1;
+                    quantity = cart[item_id][0] + 1;
+                    cart[item_id][0] = quantity;
                 } else {
-                    cart[item_id] = 1;
+                    quantity = 1;
+                    name = document.getElementById('nm' + item_id).innerHTML;
+                    cart[item_id] = [quantity, name];
                 }
                 localStorage.setItem('cart',JSON.stringify(cart));
                 document.getElementById('cart').innerHTML = "Cart:(" + Object.keys(cart).length + ")"
@@ -144,9 +145,10 @@
                 for(let i in cart){
                     cartString += cartIndex;
                     if(!cart[i] || !document.getElementById('nm' + i)) continue
-                    cartString += document.getElementById('nm' + i).innerHTML + 'Qty:' + cart[i] + '<br />';
+                    cartString += document.getElementById('nm' + i).innerHTML + 'Qty:' + cart[i][0] + '<br />';
                     cartIndex+=1;
                 }
+                cartString += '<a class="btn btn-warning" href="/checkout" role="button">Checkout</a>'
                 const popover = bootstrap.Popover.getOrCreateInstance('#cart')
                 popover.setContent({
                     '.popover-header': '',

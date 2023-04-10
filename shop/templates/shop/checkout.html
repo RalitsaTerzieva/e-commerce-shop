@@ -51,6 +51,10 @@
                       <label for="inputZip" class="form-label">Zip</label>
                       <input type="text" class="form-control" id="zipcode" name="zipcode">
                     </div>
+                    <div class="col-md-2">
+                        <label for="inputZip" class="form-label">Amount to be paid</label>
+                        <input type="text" class="form-control" readonly='' name='total' id='total'>
+                      </div>
             
                     <div class="col-12">
                       <button type="submit" class="btn btn-primary">Place Order</button>
@@ -80,6 +84,7 @@
             $('#item_list').append(itemString);
         }
         let totalPrice = `<li class='list-group-item d-flex justify-content-between'><b'>Your total: ${total}</b></li>`
+        $('#total').val(total)
         $('#item_list').append(totalPrice);
         $('#items').val(JSON.stringify(cart))
 

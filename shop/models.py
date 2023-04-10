@@ -20,6 +20,7 @@ class Order(models.Model):
     city = models.CharField(max_length=200)
     state = models.CharField(max_length=200)
     zipcode = models.CharField(max_length=200)
+    price = models.FloatField(default=0.00)
     
     def __str__(self):
         return self.name

@@ -7,7 +7,34 @@ This is a Django based e-commerce project for shoping.
 
 ## Installation
 
-Use the package manager [pip](https://pip.pypa.io/en/stable/) to install this e-commerce project.
 
-```bash
-pip install e-commerce-shop
+1. Clone th repository
+
+```
+git clone https://github.com/RalitsaTerzieva/e-commerce-shop
+``` 
+
+2. Install all required packages
+
+3. Complete all of the migrations
+
+```
+python manage.py makemigrations
+python manage.py migrate
+```
+
+4. Create a super user for yourself
+
+```
+python manage.py createsuperuser
+```
+
+5. Run your server
+
+```
+python manage.py runserver
+```
+
+If you liked the application, you can always show your appreciation by starring my repo 🌟
+
+Cheers, Ralitsa Popova

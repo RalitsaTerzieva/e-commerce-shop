@@ -8,7 +8,7 @@ This is a Django based e-commerce project for shoping.
 ## Installation
 
 
-1. Clone th repository
+1. Clone the repository
 
 ```
 git clone https://github.com/RalitsaTerzieva/e-commerce-shop
